@@ -5,6 +5,8 @@ import { Subject } from 'rxjs/internal/Subject'
 import { orderBy } from 'lodash'
 import { FormControl } from '@angular/forms'
 import { distinctUntilChanged, takeUntil, debounceTime } from 'rxjs/operators'
+import { ResponsiveTableService } from './responsive-table.service'
+import { UserData } from '../interfaces'
 @Component({
     selector: 'app-responsive-table',
     templateUrl: './responsive-table.component.html',
@@ -13,11 +15,11 @@ import { distinctUntilChanged, takeUntil, debounceTime } from 'rxjs/operators'
 export class ResponsiveTableComponent implements OnInit, OnDestroy {
     destroy$: Subject<void> = new Subject()
     displayedColumns = ['ID', 'Name', 'Progress', 'Color']
-    rows: Array<any> = []
+    rows: UserData[] = []
     filterBy: FormControl = new FormControl('')
     @ViewChild(MatPaginator) paginator1!: MatPaginator
     helpers = ResponsiveTableHelpers
-    dataSource = new MatTableDataSource<[]>([])
+    dataSource = new MatTableDataSource<UserData>([])
     pageLength = 0
     pageSize = 10
     pageSizeOptions: number[] = [10, 25, 50, 100]
@@ -30,7 +32,7 @@ export class ResponsiveTableComponent implements OnInit, OnDestroy {
     @Output() sort = new EventEmitter()
     @Output() dup = new EventEmitter()
     pageEvent!: PageEvent
-    constructor() {}
+    constructor(private service: ResponsiveTableService) {}
 
     ngOnDestroy(): void {
         this.destroy$.next()
@@ -52,6 +54,10 @@ export class ResponsiveTableComponent implements OnInit, OnDestroy {
         for (let i = 0; i < this.helpers.rows.length; i++) {
             this.rows = [...this.rows, this.helpers.rows[i]]
         }
+        this.service.getAll().subscribe(r => {
+            this.rows = r
+            console.log(r)
+        })
         this.dataSource = new MatTableDataSource(this.rows)
         this.pageLength = this.rows.length
         setTimeout(() => {

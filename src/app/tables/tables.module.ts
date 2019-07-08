@@ -34,6 +34,8 @@ import { FilterTableComponent } from './filter-table/filter-table.component'
 import { FeatureTableComponent } from './feature-table/feature-table.component'
 import { ResponsiveTableComponent } from './responsive-table/responsive-table.component'
 import { FixedTableComponent } from './fixed-table/fixed-table.component'
+import { ResponsiveTableService } from './responsive-table/responsive-table.service'
+import { HttpClientModule } from '@angular/common/http'
 
 export function highlightJsFactory(): any {
     hljs.registerLanguage('typescript', hljsTypescript)
@@ -43,6 +45,7 @@ export function highlightJsFactory(): any {
 @NgModule({
     imports: [
         CommonModule,
+        HttpClientModule,
         FlexLayoutModule,
         MatButtonModule,
         MatIconModule,
@@ -71,7 +74,6 @@ export function highlightJsFactory(): any {
         TablesRouterModule
     ],
     declarations: [FilterTableComponent, FeatureTableComponent, ResponsiveTableComponent, FixedTableComponent],
-
-    exports: []
+    providers: [ResponsiveTableService]
 })
 export class TablesModule {}
