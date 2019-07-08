@@ -16,13 +16,6 @@ export class SalesListComponent implements OnInit {
             watch: false
         },
         {
-            companyIcon: 'https://firebase.google.com/_static/4d0ad1dc9e/images/firebase/logo.png',
-            companyName: 'Firebase',
-            star: '2k',
-            fork: false,
-            watch: false
-        },
-        {
             companyIcon:
                 // tslint:disable-next-line:max-line-length
                 'https://crunchbase-production-res.cloudinary.com/image/upload/c_lpad,h_256,w_256,f_jpg/v1481031537/j9c8urpwe7uabwmt2qau.png',

@@ -4,53 +4,126 @@
             <h1 class="mat-headline center-align">Responsive Tables</h1>
         </mat-toolbar>
         <div class="table-container">
-            <table matSort (matSortChange)="sortData($event)">
-                <thead>
-                    <tr>
-                        <th mat-sort-header="{{ th.key }}" scope="col" *ngFor="let th of helpers?.header">
-                            {{ th.name }}
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let row of rows; let i = index">
-                        <td [attr.data-label]="th.name" *ngFor="let th of helpers?.header">
-                            <span>
-                                {{ row[th.key] }}
-
-                                <mat-chip
-                                    selected="true"
-                                    color="warn"
-                                    matTooltip="{{ row['duplicate_applications'].length }} duplicate entries"
-                                    matTooltipPosition="right"
-                                    *ngIf="
-                                        row['duplicate_applications'] !== 'undefined' &&
-                                        row['duplicate_applications'] &&
-                                        row['duplicate_applications'].length > 0
-                                    "
-                                >
-                                    {{ row['duplicate_applications'].length }}
-                                </mat-chip>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr *ngIf="rows?.length == 0 && status == false">
-                        <td style="text-align: center;">
-                            No records found
-                        </td>
-                    </tr>
-                </tbody>
-                <thead *matHeaderRowDef="displayedColumns"></thead>
-                <tr *matRowDef="let row; columns: displayedColumns"></tr>
-            </table>
-
-            <mat-paginator
-                [length]="pageLength"
-                [pageSize]="pageSize"
-                [pageSizeOptions]="[1, 5, 10, 25, 100, 150, 200]"
-                (page)="next($event)"
+            <mat-form-field appearance="outline">
+                <mat-label>Tìm kiếm</mat-label>
+                <input matInput [formControl]="filterBy" placeholder="Nhập giá trị cần tìm" />
+            </mat-form-field>
+            <ng-container
+                *ngTemplateOutlet="
+                    tableTemplate;
+                    context: {
+                        dataSource: dataSource
+                    }
+                "
             >
-            </mat-paginator>
+            </ng-container>
+            <ng-template #tableTemplate>
+                <!-- <table matSort (matSortChange)="sortData($event)">
+        <thead>
+          <tr>
+            <th mat-sort-header="{{ th.key }}" scope="col" *ngFor="let th of helpers?.header">
+              {{ th.name }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of rows; let i = index">
+            <td [attr.data-label]="th.name" *ngFor="let th of helpers?.header">
+              <span>
+                {{ row[th.key] }}
+
+                <mat-chip selected="true" color="warn" *ngIf="row &&
+                 row['duplicate_applications'] &&
+                 row['duplicate_applications'] !== 'undefined' &&
+                 row['duplicate_applications'].length > 0
+                 " matTooltip="{{ row['duplicate_applications'].length }} duplicate entries"
+                  matTooltipPosition="right">
+                  {{ row['duplicate_applications'].length }}
+                </mat-chip>
+              </span>
+            </td>
+          </tr>
+          <tr *ngIf="rows?.length === 0 && status === false">
+            <td style="text-align: center;">
+              No records found
+            </td>
+          </tr>
+        </tbody>
+        <thead *matHeaderRowDef="displayedColumns"></thead>
+        <tr *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <mat-paginator [length]="pageLength" [pageSize]="pageSize" showFirstLastButtons
+        [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event">
+      </mat-paginator> -->
+                <table
+                    mat-table
+                    [dataSource]="dataSource"
+                    matSort
+                    class="mat-elevation-z8 w-100"
+                    (matSortChange)="sortDataTable($event)"
+                    *ngIf="dataSource"
+                >
+                    <ng-container matColumnDef="ID">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            ID
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                            {{ element.id }}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Name
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                            {{ element.name }}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Progress">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Progress
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                            {{ element.progress }}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Color">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Color
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                            {{ element.color }}
+                        </td>
+                    </ng-container>
+                    <thead *matHeaderRowDef="displayedColumns"></thead>
+                    <ng-container matColumnDef="notfound">
+                        <td mat-footer-cell *matFooterCellDef colspan="4" class="text-center font-size-hold-back">
+                            <div>
+                                Không có dữ liệu được tìm thấy
+                            </div>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                    <tr
+                        mat-footer-row
+                        *matFooterRowDef="['notfound']"
+                        [hidden]="
+                            !(!dataSource.data || dataSource.data.length === 0 || dataSource.filteredData.length === 0)
+                        "
+                    ></tr>
+                </table>
+
+                <mat-paginator
+                    [length]="pageLength"
+                    [pageSize]="pageSize"
+                    showFirstLastButtons
+                    [pageSizeOptions]="pageSizeOptions"
+                    (page)="pageEvent = $event"
+                >
+                </mat-paginator>
+            </ng-template>
         </div>
     </div>
 </div>
