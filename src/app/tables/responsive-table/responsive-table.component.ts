@@ -7,6 +7,7 @@ import { FormControl } from '@angular/forms'
 import { distinctUntilChanged, takeUntil, debounceTime } from 'rxjs/operators'
 import { ResponsiveTableService } from './responsive-table.service'
 import { UserData } from '../interfaces'
+import { throwError } from 'rxjs'
 @Component({
     selector: 'app-responsive-table',
     templateUrl: './responsive-table.component.html',
@@ -54,10 +55,15 @@ export class ResponsiveTableComponent implements OnInit, OnDestroy {
         for (let i = 0; i < this.helpers.rows.length; i++) {
             this.rows = [...this.rows, this.helpers.rows[i]]
         }
-        this.service.getAll().subscribe(r => {
-            this.rows = r
-            console.log(r)
-        })
+        this.service.getAll().subscribe(
+            r => {
+                this.rows = r
+            },
+            (error: any) => {
+                alert(`Error Code:${error}`)
+                return throwError(error)
+            }
+        )
         this.dataSource = new MatTableDataSource(this.rows)
         this.pageLength = this.rows.length
         setTimeout(() => {
