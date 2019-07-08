@@ -1,6 +1,5 @@
 export const SPINNER_HELPERS: any = {
-
-	tsSourceProgressSpinner: `
+    tsSourceProgressSpinner: `
 import { MatProgressSpinnerModule } from '@angular/material';
     @NgModule({
       imports: [
@@ -11,7 +10,7 @@ import { MatProgressSpinnerModule } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'cdk-spinner',
+  selector: 'app-spinner',
   templateUrl: './spinner.component.html',
   styleUrls: ['./spinner.component.scss']
 })
@@ -26,7 +25,7 @@ export class SpinnerComponent implements OnInit {
 }
 `.trim(),
 
-	htmlSourceProgressSpinner: `
+    htmlSourceProgressSpinner: `
 <div fxLayout="column" fxLayoutGap=15px>
     <section class="example-section">
           <label class="example-margin">Color:</label>
@@ -64,7 +63,6 @@ export class SpinnerComponent implements OnInit {
 <div fxFlex.xs="100" fxFlex.lg="50" fxFlex.md="50" fxFlex.sm="50" >
     <h4 class="mat-subheading-2 center-align">Result</h4>
     <mat-divider></mat-divider>
-        
     <mat-progress-spinner
         class="example-margin"
         [color]="color"
@@ -73,5 +71,5 @@ export class SpinnerComponent implements OnInit {
     </mat-progress-spinner>
 </div>
 
-`.trim(),
-};
+`.trim()
+}

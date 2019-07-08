@@ -1,6 +1,5 @@
 export const SLIDER_HELPERS: any = {
-
-	tsSourceSlider: `
+    tsSourceSlider: `
 import { MatSliderModule } from '@angular/material';
 
 
@@ -13,7 +12,7 @@ import { MatSliderModule } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'cdk-slider',
+  selector: 'app-slider',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss']
 })
@@ -31,8 +30,7 @@ export class SliderComponent implements OnInit {
 	vertical = false;
 }
 	`.trim(),
-	htmlSourceSlider:`
+    htmlSourceSlider: `
 <mat-slider></mat-slider>
-	`.trim(),
-
+	`.trim()
 }

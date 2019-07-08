@@ -1,6 +1,5 @@
 export const SLIDETOGGLE_HELPERS: any = {
-
-	tsSourceSlideToggle: `
+    tsSourceSlideToggle: `
 import { MatSlideToggleModule } from '@angular/material';
 @NgModule({
 		  imports: [
@@ -10,7 +9,7 @@ export class AppModule { }
 
 import { Component, OnInit } from '@angular/core';
 @Component({
-  selector: 'cdk-slidetoggle',
+  selector: 'app-slidetoggle',
   templateUrl: './slidetoggle.component.html',
   styleUrls: ['./slidetoggle.component.scss']
 })
@@ -21,7 +20,7 @@ export class SlidetoggleComponent implements OnInit {
 	disabled = false;
 }
 	`.trim(),
-	htmlSourceSlideToggle: `
+    htmlSourceSlideToggle: `
 <mat-slide-toggle>Slide me!</mat-slide-toggle>
-	`.trim(),
+	`.trim()
 }

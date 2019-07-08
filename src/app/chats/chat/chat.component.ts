@@ -1,60 +1,56 @@
-import { Component, Input, Inject, Output, EventEmitter } from '@angular/core';
-import { MatDialog } from '@angular/material';
-import { NoticeComponent } from '../notice/notice.component';
+import { Component, Input, Inject, Output, EventEmitter } from '@angular/core'
+import { MatDialog } from '@angular/material'
+import { NoticeComponent } from '../notice/notice.component'
 
 @Component({
-  selector: 'app-chat',
-  templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss']
+    selector: 'app-chat',
+    templateUrl: './chat.component.html',
+    styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent {
+    @Input() chatSidenav
+    @Input() activeChat
+    @Input() messages
+    @Output() onSendChat = new EventEmitter()
 
-  @Input() chatSidenav;
-  @Input() activeChat;
-  @Input() messages;
-  @Output() onSendChat = new EventEmitter();
+    newMessage: string
+    avatar = 'assets/user-image.jpg'
 
-  newMessage: string;
-  avatar: string = 'assets/user-image.jpg';
+    animal: string
+    name: string
 
-  animal: string;
-  name: string;
+    constructor(@Inject('ChatsService') private service, public dialog: MatDialog) {}
 
-  constructor(@Inject('ChatsService') private service, public dialog: MatDialog) {
-  }
-
-  onSendTriggered() {
-    if (this.newMessage) {
-      let chat = {
-        message: this.newMessage,
-        when: new Date(),
-        who: 'me'
-      };
-      this.activeChat.messages.push(chat);
-      this.onSendChat.emit(this.activeChat);
-      this.newMessage = '';
+    onSendTriggered() {
+        if (this.newMessage) {
+            const chat = {
+                message: this.newMessage,
+                when: new Date(),
+                who: 'me'
+            }
+            this.activeChat.messages.push(chat)
+            this.onSendChat.emit(this.activeChat)
+            this.newMessage = ''
+        }
     }
 
-  }
+    clearMessages(activeChat) {
+        activeChat.messages.length = 0
+    }
 
-  clearMessages(activeChat) {
-    activeChat.messages.length = 0;
-  }
+    onChatSideTriggered() {
+        this.chatSidenav.toggle()
+    }
 
-  onChatSideTriggered() {
-    this.chatSidenav.toggle();
-  }
+    onNoticeTriggered() {
+        const dialogRef = this.dialog.open(NoticeComponent, {
+            width: '250px',
+            data: { name: this.name, animal: this.animal }
+        })
 
-  onNoticeTriggered() {
-    const dialogRef = this.dialog.open(NoticeComponent, {
-      width: '250px',
-      data: {name: this.name, animal: this.animal}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
-  }
-
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed')
+            this.animal = result
+        })
+    }
 }

@@ -1,6 +1,5 @@
 export const PROGRESSBAR_HELPERS: any = {
-
-	tsSourceProgressbar: `
+    tsSourceProgressbar: `
 import { MatProgressBarModule } from '@angular/material';
 @NgModule({
 		  imports: [
@@ -10,7 +9,7 @@ export class AppModule { }
 
 import { Component, OnInit } from '@angular/core';
 @Component({
-  selector: 'cdk-progressbar',
+  selector: 'app-progressbar',
   templateUrl: './progressbar.component.html',
   styleUrls: ['./progressbar.component.scss']
 })
@@ -25,12 +24,11 @@ export class ProgressbarComponent implements OnInit {
   public mode;
   public value;
   public bufferValue;
-  
 
 }
 
 	`.trim(),
-	htmlSourceProgressbar: `
+    htmlSourceProgressbar: `
 <div fxLayout="column" fxLayoutGap=15px>
 	<section class="example-section" fxLayout="row"  >
 		<label class="example-margin">Color:</label>
@@ -44,7 +42,6 @@ export class ProgressbarComponent implements OnInit {
 			<mat-radio-button class="example-margin" value="warn">
 			Warn
 			</mat-radio-button>
-			
 		</mat-radio-group>
 	</section>
 
@@ -88,6 +85,5 @@ export class ProgressbarComponent implements OnInit {
 	[bufferValue]="bufferValue">
 	</mat-progress-bar>
 </section>
-	`.trim(),
-
+	`.trim()
 }

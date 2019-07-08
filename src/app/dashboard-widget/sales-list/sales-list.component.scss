@@ -1,10 +1,9 @@
 @mixin sales-list($theme) {
-    
-    .sales-list{
+    .sales-list {
         margin: 10px 5px;
         background: white;
     }
-    .pull-right{
+    .pull-right {
         flex: 1 1 auto;
     }
     mat-list-item:hover {
@@ -14,14 +13,13 @@
     .mat-chip {
         padding: 1px 13px;
     }
-    
 }
 .nav-item {
-  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-  cursor: default;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: default;
 
-  &:hover {
-    transform: translate(0, -8px);
-    box-shadow: 0 20px 20px rgba(0, 0, 0, .16)
-  }
+    &:hover {
+        transform: translate(0, -8px);
+        box-shadow: 0 20px 20px rgba(0, 0, 0, 0.16);
+    }
 }

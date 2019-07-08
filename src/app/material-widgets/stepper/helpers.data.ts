@@ -1,6 +1,5 @@
 export const STEPPER_HELPERS: any = {
-
- 	tsSourceRaisedButton: `
+    tsSourceRaisedButton: `
  		import { MatStepperModule } from '@angular/material/button';
 
 	  	@NgModule({
@@ -8,18 +7,16 @@ export const STEPPER_HELPERS: any = {
 		    MatStepperModule,
 		})
 		export class AppModule { }
-		
 		import { Component, OnInit } from '@angular/core';
 
         @Component({
-          selector: 'cdk-stepper',
+          selector: 'app-stepper',
           templateUrl: './stepper.component.html',
           styleUrls: ['./stepper.component.scss']
         })
         export class CardsComponent implements OnInit {
         }`.trim(),
-  	htmlSourceRaisedButton: `
-  		
+    htmlSourceRaisedButton: `
 		  	<button mat-raised-button (click)="isLinear = true" id="toggle-linear">Enable linear mode</button>
 			<mat-horizontal-stepper [linear]="isLinear">
 			  <mat-step [stepControl]="firstFormGroup">
@@ -53,7 +50,5 @@ export const STEPPER_HELPERS: any = {
 			    </div>
 			  </mat-step>
 			</mat-horizontal-stepper>
-		`.trim(),
-
- };
-	
+		`.trim()
+}

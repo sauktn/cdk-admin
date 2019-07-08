@@ -6,16 +6,17 @@
 // $height__search__title: 56px;
 // $margin-top__search__title: 42px;
 
-
 .list-holder {
     padding: 8px 24px;
 
-    .cdk-list-item {
+    .app-list-item {
         max-height: 45px;
+
         img {
             height: 30px;
             border-radius: 50%;
         }
+
         .from-name {
             margin-left: 10px;
             padding: 0 !important;
@@ -29,19 +30,19 @@
             min-width: 0 !important;
             text-align: left;
         }
+
         .content {
             padding: 0 5px !important;
             min-width: 0 !important;
             margin-left: 5px;
             overflow: hidden;
         }
+
         .middot {
-          font-weight: bold;
+            font-weight: bold;
         }
     }
 }
-
-
 
 // .checkbox {
 //     margin: 0 8px 0 0;

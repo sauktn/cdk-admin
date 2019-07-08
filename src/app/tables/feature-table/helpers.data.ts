@@ -1,20 +1,14 @@
+import { merge as observableMerge, BehaviorSubject, Observable } from 'rxjs'
 
-import {merge as observableMerge, BehaviorSubject, Observable} from 'rxjs';
+import { map } from 'rxjs/operators'
+import { Injectable } from '@angular/core'
+import { DataSource } from '@angular/cdk/collections'
+import { MatPaginator, MatSort } from '@angular/material'
 
-import {map} from 'rxjs/operators';
-import { Injectable } from '@angular/core';
-import {DataSource} from '@angular/cdk/collections';
-import {MatPaginator, MatSort} from '@angular/material';
-
-
-
-
-
-
-import { UserData } from '../interfaces';
+import { UserData } from '../interfaces'
 
 export const TABLE_HELPERS = {
-    allFeaturesTablehtmlsource:  `<div class="example-header" [style.display]="selection.isEmpty() ? '' : 'none'">
+  allFeaturesTablehtmlsource: `<div class="example-header" [style.display]="selection.isEmpty() ? '' : 'none'">
   <mat-form-field floatPlaceholder="never">
     <input matInput #filter placeholder="Filter users">
   </mat-form-field>
@@ -93,7 +87,7 @@ export const TABLE_HELPERS = {
   </mat-paginator>
 </div>
 `.trim(),
-  allFeaturesTabletssource:`import {Component, ElementRef, ViewChild} from '@angular/core';
+  allFeaturesTabletssource: `import {Component, ElementRef, ViewChild} from '@angular/core';
 import {DataSource} from '@angular/cdk/collections';
 import {MatPaginator, MatSort} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
@@ -244,7 +238,7 @@ export class ExampleDataSource extends DataSource<any> {
       // Filter data
       this.filteredData = this._exampleDatabase.data.slice().filter((item: UserData) => {
         let searchStr = (item.name + item.color).toLowerCase();
-        return searchStr.indexOf(this.filter.toLowerCase()) != -1;
+        return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
       });
 
       // Sort filtered data
@@ -281,7 +275,7 @@ export class ExampleDataSource extends DataSource<any> {
     });
   }
 }
-` ,
+`,
   allFeaturesTablecsssource: `/* Structure */
 .example-container {
   display: flex;
@@ -338,44 +332,81 @@ export class ExampleDataSource extends DataSource<any> {
 `
 }
 /** Constants used to fill up our data base. */
-const COLORS = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
-
-
+const COLORS = [
+  'maroon',
+  'red',
+  'orange',
+  'yellow',
+  'olive',
+  'green',
+  'purple',
+  'fuchsia',
+  'lime',
+  'teal',
+  'aqua',
+  'blue',
+  'navy',
+  'black',
+  'gray'
+]
+const NAMES = [
+  'Maia',
+  'Asher',
+  'Olivia',
+  'Atticus',
+  'Amelia',
+  'Jack',
+  'Charlotte',
+  'Theodore',
+  'Isla',
+  'Oliver',
+  'Isabella',
+  'Jasper',
+  'Cora',
+  'Levi',
+  'Violet',
+  'Arthur',
+  'Mia',
+  'Thomas',
+  'Elizabeth'
+]
 
 /** An example database that the data source uses to retrieve data for the table. */
 export class ExampleDatabase {
   /** Stream that emits whenever the data has been modified. */
-  dataChange: BehaviorSubject<UserData[]> = new BehaviorSubject<UserData[]>([]);
-  get data(): UserData[] { return this.dataChange.value; }
+  dataChange: BehaviorSubject<UserData[]> = new BehaviorSubject<UserData[]>([])
+  get data(): UserData[] {
+    return this.dataChange.value
+  }
 
   constructor() {
     // Fill up the database with 100 users.
-    for (let i = 0; i < 100; i++) { this.addUser(); }
+    for (let i = 0; i < 100; i++) {
+      this.addUser()
+    }
   }
 
   /** Adds a new user to the database. */
   addUser() {
-    const copiedData = this.data.slice();
-    copiedData.push(this.createNewUser());
-    this.dataChange.next(copiedData);
+    const copiedData = this.data.slice()
+    copiedData.push(this.createNewUser())
+    this.dataChange.next(copiedData)
   }
 
   /** Builds and returns a new User. */
   private createNewUser() {
     const name =
-        NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-        NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
+      NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
+      ' ' +
+      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
+      '.'
 
     return {
       id: (this.data.length + 1).toString(),
       name: name,
       progress: Math.round(Math.random() * 100).toString(),
       color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-    };
+    }
   }
 }
 
@@ -387,20 +418,22 @@ export class ExampleDatabase {
  * should be rendered.
  */
 export class ExampleDataSource extends DataSource<any> {
-  _filterChange = new BehaviorSubject('');
-  get filter(): string { return this._filterChange.value; }
-  set filter(filter: string) { this._filterChange.next(filter); }
+  _filterChange = new BehaviorSubject('')
+  get filter(): string {
+    return this._filterChange.value
+  }
+  set filter(filter: string) {
+    this._filterChange.next(filter)
+  }
 
-  filteredData: UserData[] = [];
-  renderedData: UserData[] = [];
+  filteredData: UserData[] = []
+  renderedData: UserData[] = []
 
-  constructor(private _exampleDatabase: ExampleDatabase,
-              private _paginator: MatPaginator,
-              private _sort: MatSort) {
-    super();
+  constructor(private _exampleDatabase: ExampleDatabase, private _paginator: MatPaginator, private _sort: MatSort) {
+    super()
 
     // Reset to the first page when the user changes the filter.
-    this._filterChange.subscribe(() => this._paginator.pageIndex = 0);
+    this._filterChange.subscribe(() => (this._paginator.pageIndex = 0))
   }
 
   /** Connect function called by the table to retrieve one stream containing the data to render. */
@@ -410,48 +443,59 @@ export class ExampleDataSource extends DataSource<any> {
       this._exampleDatabase.dataChange,
       this._sort.sortChange,
       this._filterChange,
-      this._paginator.page,
-    ];
+      this._paginator.page
+    ]
 
-    return observableMerge(...displayDataChanges).pipe(map(() => {
-      // Filter data
-      this.filteredData = this._exampleDatabase.data.slice().filter((item: UserData) => {
-        let searchStr = (item.name + item.color).toLowerCase();
-        return searchStr.indexOf(this.filter.toLowerCase()) != -1;
-      });
+    return observableMerge(...displayDataChanges).pipe(
+      map(() => {
+        // Filter data
+        this.filteredData = this._exampleDatabase.data.slice().filter((item: UserData) => {
+          const searchStr = (item.name + item.color).toLowerCase()
+          return searchStr.indexOf(this.filter.toLowerCase()) !== -1
+        })
 
-      // Sort filtered data
-      const sortedData = this.sortData(this.filteredData.slice());
+        // Sort filtered data
+        const sortedData = this.sortData(this.filteredData.slice())
 
-      // Grab the page's slice of the filtered sorted data.
-      const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
-      this.renderedData = sortedData.splice(startIndex, this._paginator.pageSize);
-      return this.renderedData;
-    }));
+        // Grab the page's slice of the filtered sorted data.
+        const startIndex = this._paginator.pageIndex * this._paginator.pageSize
+        this.renderedData = sortedData.splice(startIndex, this._paginator.pageSize)
+        return this.renderedData
+      })
+    )
   }
 
-  disconnect() {}
+  disconnect() { }
 
   /** Returns a sorted copy of the database data. */
   sortData(data: UserData[]): UserData[] {
-    if (!this._sort.active || this._sort.direction == '') { return data; }
+    if (!this._sort.active || this._sort.direction === '') {
+      return data
+    }
 
     return data.sort((a, b) => {
-      let propertyA: number|string = '';
-      let propertyB: number|string = '';
+      let propertyA: number | string = ''
+      let propertyB: number | string = ''
 
       switch (this._sort.active) {
-        case 'userId': [propertyA, propertyB] = [a.id, b.id]; break;
-        case 'userName': [propertyA, propertyB] = [a.name, b.name]; break;
-        case 'progress': [propertyA, propertyB] = [a.progress, b.progress]; break;
-        case 'color': [propertyA, propertyB] = [a.color, b.color]; break;
+        case 'userId':
+          [propertyA, propertyB] = [a.id, b.id]
+          break
+        case 'userName':
+          [propertyA, propertyB] = [a.name, b.name]
+          break
+        case 'progress':
+          [propertyA, propertyB] = [a.progress, b.progress]
+          break
+        case 'color':
+          [propertyA, propertyB] = [a.color, b.color]
+          break
       }
 
-      let valueA = isNaN(+propertyA) ? propertyA : +propertyA;
-      let valueB = isNaN(+propertyB) ? propertyB : +propertyB;
+      const valueA = isNaN(+propertyA) ? propertyA : +propertyA
+      const valueB = isNaN(+propertyB) ? propertyB : +propertyB
 
-      return (valueA < valueB ? -1 : 1) * (this._sort.direction == 'asc' ? 1 : -1);
-    });
+      return (valueA < valueB ? -1 : 1) * (this._sort.direction === 'asc' ? 1 : -1)
+    })
   }
 }
-

@@ -1,25 +1,24 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core'
 
-declare const Chart;
+declare const Chart
 @Component({
     selector: 'app-bar-chart',
     templateUrl: './bar-chart.component.html',
     styleUrls: ['./bar-chart.component.scss']
 })
 export class BarChartComponent implements OnInit {
-    
-    constructor() { }
+    constructor() {}
 
     ngOnInit() {
         setTimeout(() => {
-            this.createChart();
+            this.createChart()
         }, 400)
     }
     createChart() {
-        new Chart('chart-0', {
+        return new Chart('chart-0', {
             type: 'bar',
             data: {
-                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"],
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
                 datasets: [
                     {
                         backgroundColor: '#D32F2F' + 'BF',

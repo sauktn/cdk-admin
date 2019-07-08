@@ -1,25 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { PricingPlanComponent } from './pricing-plan.component';
+import { PricingPlanComponent } from './pricing-plan.component'
 
 describe('PricingPlanComponent', () => {
-  let component: PricingPlanComponent;
-  let fixture: ComponentFixture<PricingPlanComponent>;
+    let component: PricingPlanComponent
+    let fixture: ComponentFixture<PricingPlanComponent>
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ PricingPlanComponent ]
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [PricingPlanComponent]
+        }).compileComponents()
+    }))
+
+    beforeEach(() => {
+        fixture = TestBed.createComponent(PricingPlanComponent)
+        component = fixture.componentInstance
+        fixture.detectChanges()
     })
-    .compileComponents();
-  }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(PricingPlanComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    it('should create', () => {
+        expect(component).toBeTruthy()
+    })
+})

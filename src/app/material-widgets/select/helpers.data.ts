@@ -1,6 +1,5 @@
 export const select_HELPERS: any = {
-
-	tsSourceSelectionselect:`
+    tsSourceSelectionselect: `
 import { MatSelectModule } from '@angular/material';
 
 
@@ -12,7 +11,7 @@ import { MatSelectModule } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'cdk-select',
+  selector: 'app-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss']
 })
@@ -25,8 +24,7 @@ export class selectComponent implements OnInit {
  }
 	`.trim(),
 
-
-	htmlSourceSelectionselect:`
+    htmlSourceSelectionselect: `
 	<mat-form-field>
 	  <mat-select placeholder="Select an option" disableRipple>
 	    <mat-option value="1">Option 1</mat-option>
@@ -35,12 +33,12 @@ export class selectComponent implements OnInit {
 	  </mat-select>
 	</mat-form-field>
 
-	`.trim(),
+	`.trim()
 }
-	export const Messages: Array<any> =[
-		{from: 'codetok', subject: 'client', content: 'hi there'},
-		{from: 'client', subject: 'codetok', content: 'yes'},
-		{from: 'jay', subject: 'tom', content: 'yes please'}
-	];
+export const Messages: Array<any> = [
+    { from: 'codetok', subject: 'client', content: 'hi there' },
+    { from: 'client', subject: 'codetok', content: 'yes' },
+    { from: 'jay', subject: 'tom', content: 'yes please' }
+]
 
-	export const Links: Array<String> = ['/home', '/admin'];
+export const Links: Array<String> = ['/home', '/admin']

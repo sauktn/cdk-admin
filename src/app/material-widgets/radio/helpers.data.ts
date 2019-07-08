@@ -1,6 +1,5 @@
 export const RADIO_HELPERS: any = {
-
-	tsSourceRadio: `
+    tsSourceRadio: `
 import { MatRadioModule } from '@angular/material';
 @NgModule({
       imports: [
@@ -10,7 +9,7 @@ export class AppModule { }
 
 import { Component, OnInit } from '@angular/core';
 @Component({
-  selector: 'cdk-radio',
+  selector: 'app-radio',
   templateUrl: './radio.component.html',
   styleUrls: ['./radio.component.scss']
 })
@@ -31,7 +30,7 @@ export class RadioComponent implements OnInit {
   ];
 }
 	`.trim(),
-	htmlSourceRadio: `
+    htmlSourceRadio: `
 <h4 class="mat-title">Season:</h4>
 <mat-radio-group  [(ngModel)]="favoriteSeason" class="example-radio-button">
     <mat-radio-button  *ngFor="let season of seasons" [value]="season" class="example-radio-button">
@@ -41,5 +40,5 @@ export class RadioComponent implements OnInit {
 
 <div class="example-selected-value mat-title">Your favorite season is: {{favoriteSeason}}
 </div>
-	`.trim(),
+	`.trim()
 }

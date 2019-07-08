@@ -1,18 +1,17 @@
 export const CHECKBOX_HELPERS: any = {
-
-	tsSourceCheckbox: `
+    tsSourceCheckbox: `
 import { MatCheckboxModule } from '@angular/material'
-	
+
 		@NgModule({
 		  imports: [
-		   MatCheckboxModule 
+		   MatCheckboxModule
 		})
 		export class AppModule { }
 
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'cdk-checkbox',
+  selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss']
 })
@@ -29,7 +28,7 @@ export class CheckboxComponent implements OnInit {
 	disabled = false;
 }
 `.trim(),
-	htmlSourceCheckbox: `
+    htmlSourceCheckbox: `
 <section class="example-section">
 	<mat-checkbox class="example-margin" [(ngModel)]="checked">Checked</mat-checkbox>
 	<mat-checkbox class="example-margin" [(ngModel)]="indeterminate">Indeterminate</mat-checkbox>
@@ -58,5 +57,5 @@ export class CheckboxComponent implements OnInit {
 		I'm a checkbox
 	</mat-checkbox>
 </section>
-`.trim(),
+`.trim()
 }

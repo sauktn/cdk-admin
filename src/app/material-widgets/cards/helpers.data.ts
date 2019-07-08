@@ -1,6 +1,5 @@
 export const CARDS_HELPERS: any = {
-
-	tsSourceCards: `
+    tsSourceCards: `
 
         import { MatCardModule } from '@angular/material/button';
 
@@ -13,14 +12,14 @@ export const CARDS_HELPERS: any = {
         import { Component, OnInit } from '@angular/core';
 
         @Component({
-          selector: 'cdk-cards',
+          selector: 'app-cards',
           templateUrl: './cards.component.html',
           styleUrls: ['./cards.component.scss']
         })
         export class CardsComponent implements OnInit {
         }
 `.trim(),
-	htmlSourceCards: `
+    htmlSourceCards: `
 <div  fxLayoutAlign="space-around stretch" fxLayoutWrap >
     <mat-card>
         <mat-card-header>
@@ -44,5 +43,5 @@ export const CARDS_HELPERS: any = {
         </mat-card-actions>
     </mat-card>
 </div>
-`.trim(),
-};
+`.trim()
+}

@@ -1,27 +1,24 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core'
 
 @Component({
-    selector: 'cdk-sidemenu-item',
+    selector: 'app-sidemenu-item',
     templateUrl: './sidemenu-item.component.html',
     styleUrls: ['./sidemenu-item.component.scss']
 })
 export class SidemenuItemComponent implements OnInit {
+    @Input() menu
+    @Input() iconOnly: boolean
+    @Input() secondaryMenu = false
 
-    @Input() menu;
-    @Input() iconOnly: boolean;
-    @Input() secondaryMenu = false;
+    constructor() {}
 
-    constructor() { }
-
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
     openLink() {
-        this.menu.open = this.menu.open;
+        this.menu.open = this.menu.open
     }
 
     chechForChildMenu() {
-        return (this.menu && this.menu.sub) ? true : false;
+        return this.menu && this.menu.sub ? true : false
     }
-
 }

@@ -1,13 +1,30 @@
 # CdK Admin - FREE PREMIUM ANGULAR 5 MATERIAL DESIGN+FLEX LAYOUT ADMIN PANEL
 
-
 DEMO:https://newproject-5d731.firebaseapp.com
 
 to hire me, email me harikrishna266@gmail.com
 
-for bugs use github issue tracker 
+for bugs use github issue tracker
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+
+## Install Node Modules
+
+npm install --save-dev @angular/cli@latest
+
+npm install -g firebase-tools
+
+yarn
+
+npm i -g rxjs-tslint
+
+npm install rxjs@6 rxjs-compat@6 --save
+
+npm install react-native firebase@4.6.2 --save
+
+npm install prettier -D
+
+npm install npm-run-all husky pretty-quick -D
 
 ## Development server
 

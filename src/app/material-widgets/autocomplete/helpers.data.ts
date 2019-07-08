@@ -1,8 +1,7 @@
 export const AUTOCOMPLETE_HELPERS: any = {
-
-	tsSourceAutocomplete: `
+    tsSourceAutocomplete: `
 import { MatAutocompleteModule } from '@angular/material';
-  
+
     @NgModule({
       imports: [
        MatAutocompleteModule
@@ -15,13 +14,13 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 @Component({
-  selector: 'cdk-autocomplete',
+  selector: 'app-autocomplete',
   templateUrl: './autocomplete.component.html',
   styleUrls: ['./autocomplete.component.scss']
 })
 export class AutocompleteComponent implements OnInit {
 
-  constructor() { 
+  constructor() {
   this.stateCtrl = new FormControl();
     this.filteredStates = this.stateCtrl.valueChanges
         .startWith(null)
@@ -57,14 +56,14 @@ export class AutocompleteComponent implements OnInit {
 
 }
 `.trim(),
-	htmlSourceAutocomplete: `
+    htmlSourceAutocomplete: `
 <form class="example-form">
 	<mat-form-field class="example-full-width">
 		<input matInput placeholder="State" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
 		<mat-autocomplete #auto="matAutocomplete">
 			<mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
 			<img style="vertical-align:middle;" aria-hidden src="{{state.flag}}" height="25" />
-			<span>{{ state.name }}</span> 
+			<span>{{ state.name }}</span>
 			</mat-option>
 		</mat-autocomplete>
 	</mat-form-field>
@@ -75,6 +74,5 @@ export class AutocompleteComponent implements OnInit {
 		Disable Input?
 	</mat-slide-toggle>
 </form>
-`.trim(),
-
-};
+`.trim()
+}

@@ -1,19 +1,16 @@
 export const EXPANSION_HELPERS: any = {
-
- 	tsSourceRaisedButton: `
+    tsSourceRaisedButton: `
  		import { MatExpansionModule } from '@angular/material/expansion';
-		
 	  	@NgModule({
 		  imports: [
 		    MatExpansionModule
 		})
 		export class AppModule { }
-		
 		import { Component, OnInit } from '@angular/core';
 		import { EXPANSION_HELPERS } from './helpers.data';
 
 		@Component({
-		  selector: 'cdk-expansion-panel',
+		  selector: 'app-expansion-panel',
 		  templateUrl: './expansion-panel.component.html',
 		  styleUrls: ['./expansion-panel.component.scss']
 		})
@@ -40,8 +37,7 @@ export const EXPANSION_HELPERS: any = {
 		}
 `.trim(),
 
-  	htmlSourceRaisedButton: `
-  		
+    htmlSourceRaisedButton: `
 		  <mat-accordion>
 				<mat-expansion-panel>
 					<mat-expansion-panel-header>
@@ -74,7 +70,5 @@ export const EXPANSION_HELPERS: any = {
 					<p>I'm visible because I am open</p>
 				</mat-expansion-panel>
 			</mat-accordion>
-		`.trim(),
-
- };
-	
+		`.trim()
+}

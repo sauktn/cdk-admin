@@ -1,33 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-declare let d3: any;
+import { Component, OnInit } from '@angular/core'
+declare let d3: any
 @Component({
-	selector: 'cdk-bar-chart',
-	templateUrl: './bar-chart.component.html',
-	styleUrls: ['./bar-chart.component.scss']
+    selector: 'app-bar-chart',
+    templateUrl: './bar-chart.component.html',
+    styleUrls: ['./bar-chart.component.scss']
 })
 export class BarChartComponent implements OnInit {
+    options
+    data
+    constructor() {}
 
-	options;
-	data;
-	constructor() { }
-
-	ngOnInit() {
-	
+    ngOnInit() {
         this.options = {
             chart: {
                 type: 'discreteBarChart',
                 height: 300,
-                margin : {
+                margin: {
                     top: 20,
                     right: 20,
                     bottom: 50,
                     left: 55
                 },
-                x: function(d){return d.label;},
-                y: function(d){return d.value;},
+                x: function(d) {
+                    return d.label
+                },
+                y: function(d) {
+                    return d.value
+                },
                 showValues: true,
-                valueFormat: function(d){
-                    return d3.format(',.1f')(d);
+                valueFormat: function(d) {
+                    return d3.format(',.1f')(d)
                 },
                 duration: 500,
                 xAxis: {
@@ -38,46 +40,46 @@ export class BarChartComponent implements OnInit {
                     axisLabelDistance: -10
                 }
             }
-        };
+        }
 
         this.data = [
             {
-                key: "Cumulative Return",
+                key: 'Cumulative Return',
                 values: [
                     {
-                        "label" : "A" ,
-                        "value" : -29.765957771107
-                    } ,
+                        label: 'A',
+                        value: -29.765957771107
+                    },
                     {
-                        "label" : "B" ,
-                        "value" : 0
-                    } ,
+                        label: 'B',
+                        value: 0
+                    },
                     {
-                        "label" : "C" ,
-                        "value" : 32.807804682612
-                    } ,
+                        label: 'C',
+                        value: 32.807804682612
+                    },
                     {
-                        "label" : "D" ,
-                        "value" : 196.45946739256
-                    } ,
+                        label: 'D',
+                        value: 196.45946739256
+                    },
                     {
-                        "label" : "E" ,
-                        "value" : 0.19434030906893
-                    } ,
+                        label: 'E',
+                        value: 0.19434030906893
+                    },
                     {
-                        "label" : "F" ,
-                        "value" : -98.079782601442
-                    } ,
+                        label: 'F',
+                        value: -98.079782601442
+                    },
                     {
-                        "label" : "G" ,
-                        "value" : -13.925743130903
-                    } ,
+                        label: 'G',
+                        value: -13.925743130903
+                    },
                     {
-                        "label" : "H" ,
-                        "value" : -5.1387322875705
+                        label: 'H',
+                        value: -5.1387322875705
                     }
                 ]
             }
         ]
-	}
+    }
 }

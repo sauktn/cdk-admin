@@ -8,20 +8,21 @@
 }
 
 .text-right {
-	text-align: right;
+    text-align: right;
 }
 
-th, td {
+th,
+td {
     padding: 8px;
     text-align: left;
     border-top: 1px solid #ddd;
 }
 .nav-item {
-  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-  cursor: default;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: default;
 
-  &:hover {
-    transform: translate(0, -8px);
-    box-shadow: 0 20px 20px rgba(0, 0, 0, .16)
-  }
+    &:hover {
+        transform: translate(0, -8px);
+        box-shadow: 0 20px 20px rgba(0, 0, 0, 0.16);
+    }
 }

@@ -1,14 +1,14 @@
-import { Component, OnInit, Input, HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, HostListener, ElementRef } from '@angular/core'
 
 @Component({
-  selector: 'cdk-toolbar-notification',
-  templateUrl: './toolbar-notification.component.html',
-  styleUrls: ['./toolbar-notification.component.scss']
+    selector: 'app-toolbar-notification',
+    templateUrl: './toolbar-notification.component.html',
+    styleUrls: ['./toolbar-notification.component.scss']
 })
 export class ToolbarNotificationComponent implements OnInit {
-	cssPrefix = 'toolbar-notification';
-  	isOpen: boolean = false;
-  	@Input() notifications = [];
+    cssPrefix = 'toolbar-notification'
+    isOpen = false
+    @Input() notifications = []
 
     // @HostListener('document:click', ['$event', '$event.target'])
     // onClick(event: MouseEvent, targetElement: HTMLElement) {
@@ -20,18 +20,12 @@ export class ToolbarNotificationComponent implements OnInit {
     //          this.isOpen = false;
     //     }
     // }
-  	
-  	constructor(private elementRef: ElementRef) { }
 
-  	ngOnInit() {
-  	}
+    constructor(private elementRef: ElementRef) {}
 
-  	select() {
-    	
-  	}
+    ngOnInit() {}
 
-  	delete(notification) {
-    
-  	}
+    select() {}
 
+    delete(notification) {}
 }

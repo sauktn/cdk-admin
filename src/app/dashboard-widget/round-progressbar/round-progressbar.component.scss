@@ -1,21 +1,20 @@
-
 @mixin round-progressbar($theme) {
     .round-progressbar {
-         margin: 10px 5px;
-         padding: 10px;
-         background-color:white;
-         
-         & .header {
+        margin: 10px 5px;
+        padding: 10px;
+        background-color: white;
+
+        & .header {
             text-align: center;
-            color:white;
-         }
-         & .roundholder{
+            color: white;
+        }
+        & .roundholder {
             position: absolute;
-            
-            & .current{
+
+            & .current {
                 position: relative;
             }
-         }
+        }
         .progress-wrapper {
             position: relative;
             margin: 20px auto;
@@ -30,7 +29,7 @@
         }
 
         round-progress {
-          margin: auto;
+            margin: auto;
         }
     }
 }

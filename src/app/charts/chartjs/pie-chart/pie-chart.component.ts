@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-declare const Chart;
+import { Component, OnInit, ViewEncapsulation } from '@angular/core'
+declare const Chart
 
 @Component({
     selector: 'app-pie-chart',
@@ -7,29 +7,25 @@ declare const Chart;
     styleUrls: ['./pie-chart.component.scss']
 })
 export class PieChartComponent implements OnInit {
-    constructor() { }
+    constructor() {}
 
     ngOnInit() {
         setTimeout(() => {
-            this.createChart();
+            this.createChart()
         }, 400)
     }
     createChart() {
-
-        new Chart('piechart', {
+        return new Chart('piechart', {
             type: 'doughnut',
             data: {
                 labels: ['Data '],
-                datasets: [{
+                datasets: [
+                    {
+                        data: [46.97, 46.91, 24.56],
 
-                    data: [46.97, 46.91, 24.56,],
-
-                    backgroundColor: [
-                        'rgba(255, 99, 132,.7)',
-                        'rgba(66, 165, 245,.7)',
-                        'rgba(38, 166, 154,.7)',
-                    ],
-                }]
+                        backgroundColor: ['rgba(255, 99, 132,.7)', 'rgba(66, 165, 245,.7)', 'rgba(38, 166, 154,.7)']
+                    }
+                ]
             },
             options: {
                 elements: {
@@ -52,10 +48,6 @@ export class PieChartComponent implements OnInit {
                     text: 'LEAD GRAPH'
                 }
             }
-
         })
     }
 }
-
-
-

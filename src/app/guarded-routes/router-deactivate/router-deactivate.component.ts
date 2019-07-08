@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
-  selector: 'app-router-deactivate',
-  templateUrl: './router-deactivate.component.html',
-  styleUrls: ['./router-deactivate.component.scss']
+    selector: 'app-router-deactivate',
+    templateUrl: './router-deactivate.component.html',
+    styleUrls: ['./router-deactivate.component.scss']
 })
 export class RouterDeactivateComponent implements OnInit {
+    constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+    ngOnInit() {}
 }

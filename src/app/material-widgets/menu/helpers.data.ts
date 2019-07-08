@@ -1,5 +1,5 @@
 export const MENU_HELPERS: any = {
-	tsSourceMenu: `
+    tsSourceMenu: `
 import { MatMenuModule } from '@angular/material';
 @NgModule({
       imports: [
@@ -9,7 +9,7 @@ export class AppModule { }
 
 import { Component, OnInit } from '@angular/core';
 @Component({
-  selector: 'cdk-menu',
+  selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
@@ -22,7 +22,7 @@ export class MenuComponent implements OnInit {
 
 }
 	`.trim(),
-	htmlSourceMenu: `
+    htmlSourceMenu: `
 <div>
     <button mat-button [matMenuTriggerFor]="menu">Menu</button>
     <mat-menu #menu="matMenu">
@@ -30,5 +30,5 @@ export class MenuComponent implements OnInit {
         <button mat-menu-item>Item 2</button>
     </mat-menu>
 </div>
-	`.trim(),
+	`.trim()
 }

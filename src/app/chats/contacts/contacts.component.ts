@@ -1,23 +1,18 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core'
 
 @Component({
-  selector: 'app-contacts',
-  templateUrl: './contacts.component.html',
-  styleUrls: ['./contacts.component.scss']
+    selector: 'app-contacts',
+    templateUrl: './contacts.component.html',
+    styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent {
+    @Input() chats
+    @Output() onActiveChat = new EventEmitter()
 
-  @Input() chats;
-  @Output() onActiveChat = new EventEmitter();
+    avatar = '../assets/user-image.jpg'
 
-  avatar: string = '../assets/user-image.jpg';
-
-  constructor() {
-  }
-  ngAfterViewInit() {
-  }
-  setActiveChat(chat) {
-    this.onActiveChat.emit(chat);
-  }
-
+    constructor() {}
+    setActiveChat(chat) {
+        this.onActiveChat.emit(chat)
+    }
 }

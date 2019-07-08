@@ -2,7 +2,7 @@ $height__chat-header: 150px;
 $height__chat-toolbar: 64px;
 $height__chat-container: calc(100% - #{$height__chat-header - $height__chat-toolbar});
 .avatar {
-  width: 41px;
+    width: 41px;
     min-width: 40px;
     height: 40px;
     line-height: 40px;
@@ -11,46 +11,46 @@ $height__chat-container: calc(100% - #{$height__chat-header - $height__chat-tool
 }
 
 mat-toolbar {
-  border-bottom: 1px solid #EEE;
-  .current-contact {
-    .name {
-      font-size: 18px;
-      font-weight: 500;
-    }
+    border-bottom: 1px solid #eee;
+    .current-contact {
+        .name {
+            font-size: 18px;
+            font-weight: 500;
+        }
 
-    .status {
-      font-size: 14px;
-      color: #888;
+        .status {
+            font-size: 14px;
+            color: #888;
+        }
     }
-  }
 }
 
 .chat-contacts-container {
-  height: calc(100% - #{$height__chat-toolbar});
+    height: calc(100% - #{$height__chat-toolbar});
 
-  .chat-contacts {
-    padding-top: 0;
+    .chat-contacts {
+        padding-top: 0;
 
-    .chat-contact {
-      position: relative;
-      cursor: pointer;
-      transition: background .1s linear;
+        .chat-contact {
+            position: relative;
+            cursor: pointer;
+            transition: background 0.1s linear;
 
-      &:hover {
-        background: #EEE;
-      }
+            &:hover {
+                background: #eee;
+            }
 
-      .name {  }
+            .name {
+            }
 
-      .last-message {
-        color: #888;
-      }
+            .last-message {
+                color: #888;
+            }
+        }
     }
-  }
 }
 
-
-.sidenav-container, .sidenav-scrollbar-container {
-  height: 100%;
+.sidenav-container,
+.sidenav-scrollbar-container {
+    height: 100%;
 }
-

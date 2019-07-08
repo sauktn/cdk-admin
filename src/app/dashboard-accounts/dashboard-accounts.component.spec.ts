@@ -1,25 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { DashboardAccountsComponent } from './dashboard-accounts.component';
+import { DashboardAccountsComponent } from './dashboard-accounts.component'
 
 describe('DashboardAccountsComponent', () => {
-  let component: DashboardAccountsComponent;
-  let fixture: ComponentFixture<DashboardAccountsComponent>;
+    let component: DashboardAccountsComponent
+    let fixture: ComponentFixture<DashboardAccountsComponent>
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ DashboardAccountsComponent ]
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [DashboardAccountsComponent]
+        }).compileComponents()
+    }))
+
+    beforeEach(() => {
+        fixture = TestBed.createComponent(DashboardAccountsComponent)
+        component = fixture.componentInstance
+        fixture.detectChanges()
     })
-    .compileComponents();
-  }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(DashboardAccountsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    it('should create', () => {
+        expect(component).toBeTruthy()
+    })
+})

@@ -1,6 +1,5 @@
 export const BUTTON_HELPERS: any = {
-
- 	tsSourceRaisedButton: `
+    tsSourceRaisedButton: `
  		import { MatButtonModule } from '@angular/material/button';
 
 	  	@NgModule({
@@ -12,7 +11,7 @@ export const BUTTON_HELPERS: any = {
 		import { Component, OnInit } from '@angular/core';
 
         @Component({
-          selector: 'cdk-buttons',
+          selector: 'app-buttons',
           templateUrl: './buttons.component.html',
           styleUrls: ['./buttons.component.scss']
         })
@@ -21,8 +20,8 @@ export const BUTTON_HELPERS: any = {
 
 		`.trim(),
 
-  	htmlSourceRaisedButton: `
-  		
+    htmlSourceRaisedButton: `
+
 		  <button mat-raised-button>Basic</button>
 		  <button mat-button color="primary">Primary</button>
 		  <button mat-icon-button color="accent">
@@ -33,7 +32,5 @@ export const BUTTON_HELPERS: any = {
                 <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
                 </button>
 		  <a mat-button routerLink=".">Link</a>
-		`.trim(),
-
- };
-	
+		`.trim()
+}
