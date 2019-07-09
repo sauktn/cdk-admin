@@ -1,12 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, OnInit, Input, OnDestroy } from '@angular/core'
+import { Subject } from 'rxjs/Subject'
 
 @Component({
     selector: 'app-sidebar',
     templateUrl: './sidebar.component.html',
     styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, OnDestroy {
     today = Date.now()
+    destroy$: Subject<void> = new Subject()
     // public bufferValue;
 
     events = [
@@ -70,4 +72,9 @@ export class SidebarComponent implements OnInit {
     constructor() {}
 
     ngOnInit() {}
+
+    ngOnDestroy(): void {
+        this.destroy$.next()
+        this.destroy$.complete()
+    }
 }

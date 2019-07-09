@@ -5,12 +5,19 @@ import { DashboardCrmComponent } from './dashboard-crm.component'
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { MatCardModule } from '@angular/material/card'
 import { DashboardWidgetModule } from '../dashboard-widget/dashboard-widget.module'
-
+import { FullscreenModule } from '../core/ui/fullscreen/fullscreen.module'
 export const appRoutes: Routes = [{ path: '', component: DashboardCrmComponent }]
 
 @NgModule({
-    imports: [CommonModule, RouterModule.forChild(appRoutes), FlexLayoutModule, MatCardModule, DashboardWidgetModule],
+    imports: [
+        CommonModule,
+        FullscreenModule,
+        RouterModule.forChild(appRoutes),
+        FlexLayoutModule,
+        MatCardModule,
+        DashboardWidgetModule
+    ],
     declarations: [DashboardCrmComponent],
-    exports: []
+    exports: [DashboardCrmComponent]
 })
 export class DashboardCrmModule {}

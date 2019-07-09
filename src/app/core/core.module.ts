@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { SidemenuComponent } from './sidemenu/sidemenu.component'
-import { SidemenuItemComponent } from './sidemenu-item/sidemenu-item.component'
 import { MatListModule } from '@angular/material/list'
 import { MatButtonModule } from '@angular/material/button'
 import { MatInputModule } from '@angular/material/input'
@@ -15,32 +13,31 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar'
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar'
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar'
 import { FlexLayoutModule } from '@angular/flex-layout'
-import { ToolbarNotificationComponent } from './toolbar-notification/toolbar-notification.component'
-import { ToolbarComponent } from './toolbar/toolbar.component'
-import { SearchBarComponent } from './search-bar/search-bar.component'
-import { FullscreenComponent } from './fullscreen/fullscreen.component'
-import { SidebarComponent } from './sidebar/sidebar.component'
-import { UserMenuComponent } from './user-menu/user-menu.component'
 import { MatSidenavModule, MatSliderModule, MatProgressBarModule } from '@angular/material'
+import { SidemenuItemModule } from './ui/sidemenu-item/sidemenu-item.module'
+import { ToolbarNotificationModule } from './ui/toolbar-notification/toolbar-notification.module'
+import { ToolbarModule } from './ui/toolbar/toolbar.module'
+import { UserMenuModule } from './ui/user-menu/user-menu.module'
+import { SidemenuModule } from './ui/sidemenu/sidemenu.module'
+import { SearchBarModule } from './ui/search-bar/search-bar.module'
+import { FullscreenModule } from './ui/fullscreen/fullscreen.module'
+import { SidebarModule } from './ui/sidebar/sidebar.module'
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true
 }
 
 @NgModule({
-    declarations: [
-        SidemenuComponent,
-        SidemenuItemComponent,
-        ToolbarNotificationComponent,
-        ToolbarComponent,
-        SearchBarComponent,
-        FullscreenComponent,
-        SidebarComponent,
-        UserMenuComponent
-    ],
-
     imports: [
         CommonModule,
+        FullscreenModule,
+        SearchBarModule,
+        SidebarModule,
+        SidemenuModule,
+        SidemenuItemModule,
+        ToolbarModule,
+        ToolbarNotificationModule,
+        UserMenuModule,
         MatListModule,
         MatButtonModule,
         MatInputModule,
@@ -56,18 +53,17 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         MatSliderModule,
         MatProgressBarModule
     ],
-
+    declarations: [],
     exports: [
-        SidemenuComponent,
-        SidemenuItemComponent,
-        ToolbarNotificationComponent,
-        ToolbarComponent,
-        SearchBarComponent,
-        FullscreenComponent,
-        SidebarComponent,
-        UserMenuComponent
+        FullscreenModule,
+        SearchBarModule,
+        SidebarModule,
+        SidemenuModule,
+        SidemenuItemModule,
+        ToolbarModule,
+        ToolbarNotificationModule,
+        UserMenuModule
     ],
-
     providers: [
         {
             provide: PERFECT_SCROLLBAR_CONFIG,

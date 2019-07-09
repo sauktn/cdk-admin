@@ -1,14 +1,16 @@
-import { Component, OnInit, Input, HostListener, ElementRef } from '@angular/core'
+import { Component, OnInit, Input, HostListener, ElementRef, OnDestroy } from '@angular/core'
+import { Subject } from 'rxjs/Subject'
 
 @Component({
     selector: 'app-user-menu',
     templateUrl: './user-menu.component.html',
     styleUrls: ['./user-menu.component.scss']
 })
-export class UserMenuComponent implements OnInit {
+export class UserMenuComponent implements OnInit, OnDestroy {
+    destroy$!: Subject<void>
     isOpen = false
 
-    // currentUser = null;
+    // currentUser = null
     Hari
 
     @Input() currentUser = null
@@ -27,4 +29,9 @@ export class UserMenuComponent implements OnInit {
     constructor(private elementRef: ElementRef) {}
 
     ngOnInit() {}
+
+    ngOnDestroy(): void {
+        this.destroy$.next()
+        this.destroy$.complete()
+    }
 }

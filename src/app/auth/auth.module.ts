@@ -22,7 +22,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 import { DashboardCrmModule } from '../dashboard-crm/dashboard-crm.module'
 
 import { CoreModule } from '../core/core.module'
-
 @NgModule({
     imports: [
         CommonModule,
